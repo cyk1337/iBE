@@ -1,0 +1,31 @@
+
+    <!-- 底部
+    ================================================== -->
+<!--  页脚，版权信息   ================================================== -->     
+    <footer class="bs-footer" role="contentinfo">
+      <div class="container">	  
+		<p> 本站由 <strong><a href="http://www.onethink.cn" target="_blank">OneThink</a></strong> 强力驱动</p>
+      </div>
+    </footer>
+<!--  /页脚，版权信息   ================================================== -->  
+
+
+<!--  页内JS文件   ================================================== -->  
+<load href="__BOOTSTRAP3__/js/holder.js" />
+<load href="__BOOTSTRAP3__/js/highlight.js" /><script>hljs.initHighlightingOnLoad();</script>
+
+<!-- Custom JS for this template -->
+<load href="__BOOTSTRAP3__/js/application.js" />
+
+<load href="__JS__/Jquery/jquery.form.js" />
+<load href="__BOOTSTRAP3__/js/h.js" />	
+
+<!--  /页内JS文件结束   ================================================== --> 
+<include file="Public/var"/>
+
+<block name="script"></block> <!-- 用于加载js代码 -->
+<!-- 页面footer钩子，一般用于加载插件JS文件和JS代码 -->
+{:hook('pageFooter', 'widget')}
+<div class="hidden"><!-- 用于加载统计代码等隐藏元素 -->
+	<block name="hidden"></block>
+</div>

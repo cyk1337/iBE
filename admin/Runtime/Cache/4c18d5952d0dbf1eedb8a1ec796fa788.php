@@ -1,0 +1,345 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title><?php echo ($title); ?></title>
+
+<link rel="stylesheet" href="__PUBLIC__/Css/admin/manageTab.css" type="text/css" />
+ <script type="text/javascript">
+//   alert("欢迎来到“书书约吗”图书交流系统!");
+ </script>
+
+<link rel="stylesheet" href="__PUBLIC__/Css/admin/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="__PUBLIC__/Css/admin/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="__PUBLIC__/Css/admin/invalid.css" type="text/css" media="screen" />
+
+</head>
+
+<body>
+<div id="body-wrapper">
+
+  <div id="sidebar">
+    <div id="sidebar-wrapper">
+     
+      	<h1 id="sidebar-title"><a href="#">管理员登录</a></h1>
+      	<img id="logo" src="__PUBLIC__/Images/admin/logo.png" alt="Admin Login" />
+
+      	<div id="profile-links"> 
+          		您好,<a href="#" title="当前用户:<?php echo ($username); ?>"><?php echo ($username); ?></a> |
+    	 		<a href="__URL__/quit" title="退出">退出</a> 
+       	</div>
+       	
+	    <ul id="main-nav">
+        <!-- nav-top-itrm current 选中时的样式 -->
+         <li> <a href="#" class="nav-top-item">书书约吗</a>
+            <ul>
+              <li><a href="#" id="nav_jianjie">项目简介</a></li>
+              <li><a href="#" id="nav_lianxi">联系我们</a></li>
+              
+            </ul>
+          </li>
+          
+          <li> <a href="#" class="nav-top-item">发布模块</a>
+            <ul>
+              <!-- <li><a href="#">1</a></li> -->
+              <li><a href="#" id="nav_fabu">查看信息</a></li>
+              <li><a href="__URL__/article" id="nav_notice">消息发布</a></li>
+               <li><a href="#" id="nav_form">匿名发布</a></li>
+            </ul>
+          </li>
+                
+          <li> <a href="#" class="nav-top-item">查询模块</a>
+            <ul>
+              <li><a href="#" id="nav_chaxun">我要查询</a></li>
+              
+            </ul>
+          </li>
+          
+          <li> <a href="#" class="nav-top-item">友情链接</a>
+            <ul>
+              <li><a href="#" id="nav_zhandian">站点</a></li>
+               <li><a href="#" id="nav_test">test</a></li>
+            </ul>
+          </li>
+       </ul>
+         
+    </div>
+  </div>
+
+  
+  
+  
+  
+  <div id="main-content">
+
+    <h2>iBookExchange后台管理系统</h2>
+	<br></br>
+	
+    <ul class="shortcut-buttons-set">
+      <li>
+      	<a class="shortcut-button" id="btn_query" href="#">
+      		<span> 
+      			<img src="__PUBLIC__/Images/admin/icons/query.ico" alt="icon" /><br />
+        	   查询
+        	</span>
+        </a>
+      </li>
+      
+      <li>
+      	<a class="shortcut-button" id="btn_fabu" href="__URL__/article">
+      		<span> 
+      			<img src="__PUBLIC__/Images/admin/icons/addinfo.ico" alt="icon" /><br />
+        		发布
+        	</span>
+        </a>
+      </li>
+      
+       
+      <li>
+      	<a class="shortcut-button" id="btn_upload" href="#">
+      		<span> 	<img src="__PUBLIC__/Images/admin/icons/add_content.ico" alt="icon" /><br/>
+        		上传图片
+        	</span>
+        </a>
+      </li>
+      
+      <li>
+      	<a class="shortcut-button" href="#" id="refresh">
+      		<span> 
+      			<img src="__PUBLIC__/Images/admin/icons/update.png" alt="icon" /><br />
+        	更新
+        	</span>
+        </a>
+      </li>
+     
+      
+    </ul>
+    
+
+    <div class="clear"></div>
+    
+    
+
+    <div class="content-box">
+    
+      <!-- Start Content Box -->
+      <div class="content-box-header">
+        <h3></h3>
+        <ul class="content-box-tabs">
+          <!-- <li><a href="#tab1" class="default-tab _nav_content">图书列表(共<?php echo ($news_count); ?>条)</a></li> -->
+          <li><a href="#tab1" class="_nav_content">图书列表(共<?php echo ($news_count); ?>条)</a></li>
+      
+        </ul>
+        <div class="clear"></div>
+      </div>
+      
+      <div class="content-box-content">
+        <!-- <div class="tab-content _nav_content default-tab" id="content_fabu"> -->
+        <div class="tab-content _nav_content" id="content_fabu">
+          
+          <div class="notification information png_bg"> <a href="#" class="close"><img src="__PUBLIC__/Images/admin/icons/cross_grey_small.png" title="Close this notification" alt="close" /></a>
+            <div>您好，<?php echo ($username); ?>，下面是最近添加的图书！ </div>
+          </div>
+          
+          <!-- 表头 -->
+          <table>
+            <thead>
+              <tr>
+                <th>
+                 
+                </th>
+                <th>标题</th>
+                <th>发布者</th>
+                <th>添加时间</th>
+                <th>联系方式</th>	 
+                <th>管理</th>
+              </tr>
+            </thead>
+              
+            <!-- 表内容部分 -->
+            <tbody>
+              <?php if(is_array($news_list)): $i = 0; $__LIST__ = $news_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+                <td></td>
+                <td><?php echo ($vo['subject']); ?> </td>
+                <td><a href="#" title="title"><?php echo ($vo['author']); ?></a></td>
+                <!-- <td><?php echo ($vo['createtime']); ?></td> -->
+                 <td><?php echo ($vo['createtime']); ?></td>
+                
+                <td><?php echo ($vo['lastmodifytime']); ?> </td>
+                <td>
+                  <!-- Icons -->
+                  <!-- <a href="__URL__/edit/id/<?php echo ($vo['id']); ?>" title="编辑"><img src="__PUBLIC__/Images/admin/icons/edit.png" alt="编辑" /></a>  -->
+                  <a href="__URL__/delete/id/<?php echo ($vo['id']); ?>" title="删除"><img src="__PUBLIC__/Images/admin/icons/cross.png" alt="删除" /></a> 
+                </td>
+              </tr><?php endforeach; endif; else: echo "" ;endif; ?>                        
+            </tbody>
+            
+              <!-- 表尾 -->
+            <tfoot>
+              <tr>
+                <td colspan="6">
+                  <div class="pagination">               	  
+                  	<?php echo ($page_method); ?>
+                  <!--
+                  	<a href="#" title="First Page">&laquo; First</a>
+                  	<a href="#" title="Previous Page">&laquo; Previous</a> 
+                  	<a href="#" class="number" title="1">1</a> 
+                  	<a href="#" class="number" title="2">2</a> 
+                  	<a href="#" class="number current" title="3">3</a> 
+                  	<a href="#" class="number" title="4">4</a> 
+                  	<a href="#" title="Next Page">Next &raquo;</a>
+                  	<a href="#" title="Last Page">Last &raquo;</a> 
+                  -->
+                  </div>                 
+                  <div class="clear"></div>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        
+        
+ <div class="tab-content _nav_content" id="content_query">
+<form action="__PUBLIC__/php/bookQuery.php" method="get">   
+  <input class="text-input small-input datepicker" type="text" id="query" name="book_name" />
+  <input class="button" type="submit" value="查询">
+</form>
+
+ </div>
+
+
+       
+   <div class="tab-content _nav_content" id="content_form">
+       <form action="__PUBLIC__/php/insert_book.php" method="post">
+         <fieldset>
+        请按要求填写如下信息~
+       
+
+         <p>
+           <label>书名</label>
+           <input class="text-input medium-input" type="text" id="small-input" name="book_name" />
+           <!-- <span class="input-notification success png_bg">Successful message</span> -->
+          请输入书名
+          <br />
+           <small>请输入书名</small> </p>
+         <p>
+           <label>作者</label>
+           <input class="text-input small-input datepicker" type="text" id="medium-input" name="book_author" />请输入作者
+
+            <p>
+           <label>发布人昵称</label>
+           <input class="text-input small-input datepicker" type="text" id="medium-input" name="user_name" />请输入发布人昵称
+          <!--  <span class="input-notification error png_bg">Error message</span> </p> -->
+         <p>
+         <p>
+           <label>手机号</label>
+           <input class="text-input small-input datepicker" type="mobile" id="medium-input" name="user_mobile" />请输入手机号
+          <!--  <span class="input-notification error png_bg">Error message</span> </p> -->
+         <p>
+        
+          <!--  <span class="input-notification error png_bg">Error message</span> </p> -->
+    
+           <!-- <label>图书类别</label>
+           <select name="dropdown" class="small-input">
+             <option value="option1">1</option>
+             <option value="option2">2</option>
+             <option value="option3">3</option>
+             <option value="option4">4</option>
+           </select>
+         </p> -->
+        <!--  <p>
+           <label>我要补充</label>&nbsp;&nbsp;
+           <textarea name="beizhu" id="" cols="60" rows="15">请输入要补充的信息</textarea>
+         </p>
+         <p> -->
+           <input class="button" type="submit" value="提交" />
+           <input type="reset" class="button" value="重置" />
+         </p>
+         </fieldset>
+         <div class="clear"></div>
+        
+     </form>
+     </div>
+      
+
+
+ <div class="tab-content _nav_content"  id="content_upload">
+    <form action="admin/Lib/Action/uploadAction.php" method="post" enctype="multipart/form-data">
+        请选择上传文件：<input type="file"  name="myFile"  /><br/>
+        <input type="submit" value="上传"/>
+    </form>
+ </div>
+       
+
+
+    
+
+        <div class="tab-content _nav_content"  id="content_jianjie"><?php echo file_get_contents("public/jianjie.txt");?></div>
+        <div class="tab-content _nav_content"  id="content_lianxi">联系我们</div>
+        <div class="tab-content _nav_content"  id="content_zhandian">站点</div>
+        <div class="tab-content _nav_content"  id="content_test">test</div>
+
+
+
+
+      </div>
+      <!-- End .content-box-content -->
+    </div>
+    <!-- End .content-box -->
+    <div class="content-box column-left closed-box">
+      <div class="content-box-header">
+        <h3>关于项目</h3>
+      </div>
+      <!-- End .content-box-header -->
+      <div class="content-box-content">
+        <div class="tab-content default-tab">
+          <h4>欢迎来到“书书约吗”图书交流系统~</h4>
+          <!-- <p> 备用 </p> -->
+        </div>
+        <!-- End #tab3 -->
+      </div>
+      <!-- End .content-box-content -->
+    </div>
+    <!-- End .content-box -->
+    <div class="content-box column-right closed-box">
+      <div class="content-box-header">
+        <!-- Add the class "closed" to the Content box header to have it closed by default -->
+        <h3>联系我们</h3>
+      </div>
+      <!-- End .content-box-header -->
+      <div class="content-box-content">
+        <div class="tab-content default-tab">
+          <h4>chaiyk@ista1997.com</h4>
+         
+        </div>
+        <!-- End #tab3 -->
+      </div>
+      <!-- End .content-box-content -->
+    </div>
+    <!-- End .content-box -->
+    <div class="clear"></div>
+   
+
+    <div id="footer"> <small>
+      <!-- Remove this notice or replace it with whatever you want -->
+      &#169; Copyright 2015  ISTA <a href="http://www.imista.com">CYK</a>  <a href="#"></a> </small> </div>
+    <!-- End #footer -->
+  </div>
+  <!-- End #main-content -->
+</div>
+
+
+<script type="text/javascript" src="__PUBLIC__/Js/admin/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/admin/cyk.jquery.configuration.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/admin/facebox.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/admin/jquery.wysiwyg.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/admin/manageTab.js"></script>
+
+
+
+
+</script>
+
+</body>
+
+</html>

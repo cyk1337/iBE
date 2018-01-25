@@ -1,0 +1,33 @@
+<block name="header"></block>
+
+
+<div class="container bs-docs-container">
+    <div class="row">
+	
+        <block name="side">
+	    <!--  ×ó±ßÀ¸£¬µ¼º½À¸   ================================================== --> 
+        <div class="col-md-3">
+          <div class="bs-sidebar hidden-print affix-top" role="complementary">
+		    <block name="publish"></block>
+            <ul class="nav bs-sidenav">			
+			<!--  µ¼º½ÌõÄÚÈÝ   ======================================================= -->                  
+			{:W('Category/lists', array(1, true))}
+			<!--  /µ¼º½ÌõÄÚÈÝ½áÊø   ================================================== -->                           
+            </ul>
+          </div>
+        </div><!--   end of div class="col-md-3"-->
+		<!--  /×ó±ßÀ¸£¬µ¼º½À¸   ================================================== -->
+		</block>
+		
+        <block name="content"></block>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(function(){
+        $(window).resize(function(){
+            $("#main-container").css("min-height", $(window).height() - 343);
+        }).resize();
+    })
+</script>
